@@ -29,12 +29,12 @@ Fourth I masked the output of the Canny edge detector to ensure that only the la
 Fifth I used a Hough Transform, with a threshold of 30, a minimum line length of 20 and a maximum distance between lines of 30. The threshold sets the minimum number of intersections between pixels in the Hough Transform space required for those pixels to be considered a line in the image. It sets the sensitivity of the Hough Transform to smaller lines. The minimm line length sets a threshold above which lines are considered. The maximum distance between lines is particularly important to the stability of the detected lines as it enables the Hough Transform to connect pieces of broken lines.
 
 Here below is a picture of the output of the Hough transform overlayed to the original images.
-![image 2](./test_images_output/Hough_image.png)
+![image 2](./test_images_output/Hough_image.jpg)
 
 Sixth, in order to draw a single line on the left and right lanes, I calculated the length-weighted average of the slope angle and intercept of the Hough Transform lines. The weighted average was required to reduce sensitivity of the average to short lines in proximity of the camera. To further improve the stability of the weighted average I used the slope angle instead of the slope as fluctuation in the slope increase hyperbolically as the line gets closer to vertical. I also masked all lines with slope angle lower than 0.3radians, to improve the robustness to non-line features (shadows, markings)
 
 Here below are the resulting lines.
-![image 3](./test_images_output/Average_image.png)
+![image 3](./test_images_output/Average_image.jpg)
 
 I also created utility functions to process, print and save all test images at once.
 
